@@ -56,7 +56,7 @@ typedef struct IDirectSound* LPDIRECTSOUND;
 //***
 
 
-int playSequence(struct dat lib[17][9]);
+int playSequence(struct dat lib[Y_COUNT+1][X_COUNT]);
 
 //int input_Buffer_Events_main();
 int call_raster_main();
@@ -110,8 +110,6 @@ int main(int argc, char argv[]) {
 	call_raster_main();													// Print Raster etc..								
 	
 
-	
-	
 	//s_main(fpath, 0);
 	//s_main(fpath, 1);
 	//printf("this is the end");
@@ -179,8 +177,8 @@ int call_raster_main() {
 		puts("");
 		}
 
-		draw_buttons(1, 3, 4);
-		draw_buttons(1, 3, 6);
+		draw_buttons(1, 2, 0,6);     //rows, colums, yoffset, xpos
+		draw_buttons(2, 3, 4,6);
 		/*printf("MOUSElib X: %d Y:%d\n", lib[posX][posY].posX, lib[posX][posY].posY);
 		printf("MOUSEPOS X: %d Y:%d", posX, posY);*/
 		do
@@ -336,12 +334,16 @@ int playSequence(struct dat lib[X_COUNT + 1][Y_COUNT + 1]) {
 
 }
 
-void draw_buttons(int xb, int yb,int yoffset1) {
+void draw_buttons(int xb, int yb,int yoffset1,int xoff) {
 	/*for (int i = 0; i < yoffset; i++) {
 		puts("");
-
+		
 	}*/
-	for (size_t x = 0; x < (yb +1) * 2 - 2; x += 2) {
+	
+	//int xoff = 5;
+	//int yoff = 3;   //unused
+
+	for (size_t x = 0+xoff; x < ((yb +1) * 2 - 2)+xoff; x += 2) {
 		SetPosition(x, yoffset+X_COUNT+1+yoffset1);
 		printf(" %c", '_');
 		//printf(" ");
@@ -352,7 +354,7 @@ void draw_buttons(int xb, int yb,int yoffset1) {
 	for (size_t x = 1; x < xb+1; x++) {
 		for (size_t y = 1; y < yb+1; y++) {
 			//(y>1)? SetPosition(y+y, x + yoffset): 
-			SetPosition(y + y - 2, x + yoffset + X_COUNT + 1 + yoffset1);
+			SetPosition(y + y - 2+xoff, x + yoffset + X_COUNT + 1 + yoffset1);
 
 			printf("|");
 

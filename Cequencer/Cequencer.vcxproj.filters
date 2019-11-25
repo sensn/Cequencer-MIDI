@@ -30,6 +30,9 @@
     <ClCompile Include="keyMidi.c">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="RTMidiUWPWIN32Wrapper.c">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="rlutil.h">
@@ -38,5 +41,8 @@
     <ClInclude Include="Header.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

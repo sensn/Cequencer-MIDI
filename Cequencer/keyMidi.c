@@ -35,7 +35,7 @@ union { unsigned long word; unsigned char data[8]; } message1;
 
 int midi_main(int argc, char** argv) {
 
-
+	
 	// variable which is both an integer and an array of characters:
 
 	// message.data[0] = command byte of the MIDI message, for example: 0x90

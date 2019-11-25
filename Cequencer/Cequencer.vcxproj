@@ -134,12 +134,23 @@
     <ClCompile Include="Input_Buffer_Events.c" />
     <ClCompile Include="keyMidi.c" />
     <ClCompile Include="main.c" />
+    <ClCompile Include="RTMidiUWPWIN32Wrapper.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header.h" />
     <ClInclude Include="rlutil.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
+    <Import Project="..\packages\winrtmidi.0.0.2\build\native\winrtmidi.targets" Condition="Exists('..\packages\winrtmidi.0.0.2\build\native\winrtmidi.targets')" />
   </ImportGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Dieses Projekt verweist auf mindestens ein NuGet-Paket, das auf diesem Computer fehlt. Verwenden Sie die Wiederherstellung von NuGet-Paketen, um die fehlenden Dateien herunterzuladen. Weitere Informationen finden Sie unter "http://go.microsoft.com/fwlink/?LinkID=322105". Die fehlende Datei ist "{0}".</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\winrtmidi.0.0.2\build\native\winrtmidi.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\winrtmidi.0.0.2\build\native\winrtmidi.targets'))" />
+  </Target>
 </Project>
